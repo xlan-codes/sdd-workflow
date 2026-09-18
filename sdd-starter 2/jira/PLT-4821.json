@@ -1,0 +1,18 @@
+{
+  "key": "PLT-4821",
+  "fields": {
+    "summary": "Partial refund for cancelled events",
+    "issuetype": { "name": "Story" },
+    "priority": { "name": "High" },
+    "labels": ["checkout", "refunds", "q3-commitment"],
+    "status": { "name": "To Do" },
+    "description": "When an event gets cancelled we need to refund the buyers. Refund the ticket price minus fees. Should be automatic, buyers shouldn't have to call support. Marketing wants this before the autumn on-sales.\n\nAC: refunds work for cancelled events.",
+    "comment": {
+      "comments": [
+        { "author": { "displayName": "PO" }, "body": "Fees = our service fees, not payment-provider fees. I think." },
+        { "author": { "displayName": "Support lead" }, "body": "Please make sure people can't claim a refund twice, we had that incident in March." }
+      ]
+    }
+  },
+  "_note": "Deliberately realistic: vague AC, half-decisions buried in comments. This is the raw material /specify-from-jira turns into EARS."
+}

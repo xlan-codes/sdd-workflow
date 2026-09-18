@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: Orders — Refunds
+  version: 1.0.0
+paths:
+  /orders/{id}/refunds:
+    post:
+      operationId: issueRefund
+      summary: Issue a refund for an order of a cancelled event (idempotent)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "201":
+          description: RefundIssued
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/RefundIssued" }
+        "401":
+          description: Expired or missing token
+          headers:
+            WWW-Authenticate:
+              schema: { type: string }
+        "409":
+          description: AlreadyRefunded — a refund is already PENDING or ISSUED
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AlreadyRefunded" }
+components:
+  schemas:
+    RefundIssued:
+      type: object
+      required: [orderId, amountCents, status]
+      properties:
+        orderId: { type: string }
+        amountCents: { type: integer, description: "minor units — EARS-1" }
+        status: { type: string, enum: [PENDING, ISSUED] }
+    AlreadyRefunded:
+      type: object
+      required: [orderId, status]
+      properties:
+        orderId: { type: string }
+        status: { type: string, enum: [PENDING, ISSUED] }

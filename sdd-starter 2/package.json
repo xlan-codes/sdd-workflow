@@ -1,0 +1,23 @@
+{
+  "name": "sdd-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Spec-Driven Development starter \u2014 specs, contracts, gates and a RED test to drive",
+  "scripts": {
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "typecheck:noinstall": "tsc --noEmit -p tsconfig.verify.json",
+    "bdd": "cucumber-js",
+    "demo:red": "node -e \"require('fs').copyFileSync('solution/refund-calculator.stub.ts','src/refunds/domain/refund-calculator.ts');console.log('RefundCalculator -> stub (RED)')\"",
+    "demo:green": "node -e \"require('fs').copyFileSync('solution/refund-calculator.solution.ts','src/refunds/domain/refund-calculator.ts');console.log('RefundCalculator -> solution (GREEN)')\""
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.4",
+    "typescript": "^5.5.4",
+    "@cucumber/cucumber": "^10.8.0",
+    "ts-node": "^10.9.2"
+  }
+}
