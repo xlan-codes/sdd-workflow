@@ -1,0 +1,82 @@
+▶ applyDiscount — happy path
+  ✔ applies a percent discount (1.096875ms)
+  ✔ applies a fixed discount (0.093625ms)
+  ✔ is case-insensitive (0.084959ms)
+  ✔ trims whitespace from code (0.06675ms)
+  ✔ accepts a code with no expiry date (0.262709ms)
+  ✔ caps percent discount at maxDiscountCents (0.160875ms)
+  ✔ does not cap percent discount below maxDiscountCents (0.431ms)
+  ✔ caps fixed discount at subtotal so totalCents is never negative (0.531375ms)
+  ✔ returns zero discount on zero subtotal (0.201916ms)
+  ✔ rounds percent discount to nearest cent (0.160083ms)
+  ✔ rounds percent discount down when fractional part is below 0.5 (0.068667ms)
+  ✔ applies minimum-order code when threshold is exactly met (0.073917ms)
+  ✔ accepts an ISO string for expiresAt (0.066ms)
+  ✔ accepts minOrderCents as an alias for minimumOrderCents (0.055167ms)
+  ✔ accepts "percentage" as an alias for "percent" type (0.058375ms)
+✔ applyDiscount — happy path (4.467542ms)
+▶ applyDiscount — expiry
+  ✔ rejects an expired code with reason EXPIRED (0.057208ms)
+  ✔ accepts a code that expires exactly now (boundary — not yet expired) (1.064041ms)
+  ✔ rejects a code that expired one millisecond ago (0.108042ms)
+✔ applyDiscount — expiry (1.32525ms)
+▶ applyDiscount — minimum order
+  ✔ rejects when subtotal is below minimumOrderCents with reason MIN_NOT_MET (0.205ms)
+  ✔ rejects when subtotal is below minOrderCents (alias field) (0.066ms)
+  ✔ rejects when subtotal is below minimum (alias field) (0.043084ms)
+  ✔ accepts when subtotal exactly meets minimumOrderCents (0.038125ms)
+✔ applyDiscount — minimum order (0.506041ms)
+▶ applyDiscount — invalid inputs
+  ✔ rejects a negative subtotal (0.07675ms)
+  ✔ rejects a float subtotal (0.065416ms)
+  ✔ rejects an empty code (0.040333ms)
+  ✔ rejects a whitespace-only code (0.050125ms)
+  ✔ rejects a code not present in catalog with reason UNKNOWN_CODE (0.074917ms)
+  ✔ throws TypeError for null code (programming error, not graceful) (0.341208ms)
+  ✔ throws TypeError for undefined code (programming error, not graceful) (0.1315ms)
+  ✔ throws TypeError for null catalog (programming error, not graceful) (0.080584ms)
+  ✔ throws TypeError for undefined catalog (programming error, not graceful) (0.081292ms)
+  ✔ throws TypeError for null catalog entry (programming error, not graceful) (0.083ms)
+✔ applyDiscount — invalid inputs (1.200625ms)
+▶ applyDiscount — malformed catalog entries
+  ✔ rejects a percent value over 100 (0.059ms)
+  ✔ rejects a negative percent value (0.032333ms)
+  ✔ rejects a fractional fixed value (0.049959ms)
+  ✔ rejects an unknown discount type (0.039333ms)
+  ✔ rejects an unreadable expiresAt (0.050917ms)
+✔ applyDiscount — malformed catalog entries (0.299041ms)
+✔ percent discount rounds half-up to the cent (EARS-2) (0.905708ms)
+✔ fixed discount never takes the total below zero (EARS-3) (0.093375ms)
+✔ percent discount respects maxDiscountCents cap (EARS-4) (0.592916ms)
+✔ codes are case-insensitive and trimmed (EARS-5) (0.097542ms)
+✔ expired code is rejected with reason EXPIRED (EARS-6) (0.732542ms)
+✔ minimum subtotal is enforced with reason MIN_NOT_MET (EARS-7) (0.26275ms)
+✔ unknown code is rejected with reason UNKNOWN_CODE (EARS-8) (0.10725ms)
+✖ amounts are integer minor units — non-integers throw TypeError (EARS-1) (1.358292ms)
+ℹ tests 45
+ℹ suites 5
+ℹ pass 44
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155.637917
+
+✖ failing tests:
+
+test at test/_oracle.test.mjs:56:1
+✖ amounts are integer minor units — non-integers throw TypeError (EARS-1) (1.358292ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception (TypeError).
+      at TestContext.<anonymous> (file:///Users/pc/Downloads/spec-economics/runs/weak/test/_oracle.test.mjs:57:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

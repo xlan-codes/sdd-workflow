@@ -1,0 +1,10 @@
+{
+  "name": "spec-economics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Measure what weak vs well-designed specs cost in tokens, dollars and minutes \u2014 with Claude Code headless.",
+  "scripts": {
+    "test": "node --test",
+    "report": "node scripts/report.mjs"
+  }
+}

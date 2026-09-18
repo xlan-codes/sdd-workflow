@@ -1,0 +1,24 @@
+✔ percent discount rounds half-up to the cent (EARS-2) (0.812916ms)
+✔ fixed discount never takes the total below zero (EARS-3) (0.09175ms)
+✔ percent discount respects maxDiscountCents cap (EARS-4) (0.068ms)
+✔ codes are case-insensitive and trimmed (EARS-5) (0.078791ms)
+✔ expired code is rejected with reason EXPIRED (EARS-6) (0.071583ms)
+✔ minimum subtotal is enforced with reason MIN_NOT_MET (EARS-7) (0.071833ms)
+✔ unknown code is rejected with reason UNKNOWN_CODE (EARS-8) (0.076ms)
+✔ amounts are integer minor units — non-integers throw TypeError (EARS-1) (0.233083ms)
+✔ percent discount rounds half-up to the cent (EARS-2) (0.834458ms)
+✔ fixed discount never takes the total below zero (EARS-3) (0.095375ms)
+✔ percent discount respects maxDiscountCents cap (EARS-4) (0.068667ms)
+✔ codes are case-insensitive and trimmed (EARS-5) (0.163416ms)
+✔ expired code is rejected with reason EXPIRED (EARS-6) (0.091542ms)
+✔ minimum subtotal is enforced with reason MIN_NOT_MET (EARS-7) (0.07625ms)
+✔ unknown code is rejected with reason UNKNOWN_CODE (EARS-8) (0.079917ms)
+✔ amounts are integer minor units — non-integers throw TypeError (EARS-1) (0.273042ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.409875
